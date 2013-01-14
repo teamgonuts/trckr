@@ -1,6 +1,13 @@
 <h1>Tracker#index</h1>
-<p>This is the tracker view</p>
-<p><b>
-  <%= link_to("Track an item" , {:action => 'track', :id => '#469'}) %>
+<p>This is the landing page</p>
+<p>
+  <u> Track an item: </u>
+  <%= form_tag(:action => 'track') do %>
+    Item ID: <%= text_field_tag(:id) %>
+
+    <%= submit_tag('Track Item') %>
+  <% end %>
+</p>
+<p><b> 
+  <%= link_to("Register a new item", {:action => 'register'}) %>
 </b></p>
-<p><b>Register an item</b></p>
