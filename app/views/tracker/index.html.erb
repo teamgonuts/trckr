@@ -2,11 +2,12 @@
 <p>This is the landing page</p>
 <p>
   <u> Track an item: </u>
-  <%= form_tag(:action => 'track') do %>
+  <%= form_tag(:action => 'track_helper') do %>
     Item ID: <%= text_field_tag(:id) %>
 
     <%= submit_tag('Track Item') %>
   <% end %>
+  <%= link_to("Track item 2", {:action => 'track', :id => '6969'}) %>
 </p>
 <p><b> 
   <%= link_to("Register a new item", {:action => 'register'}) %>
