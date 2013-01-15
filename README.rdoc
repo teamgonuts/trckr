@@ -1,6 +1,6 @@
 Trckr is an easy-to-use applicaiton allowing users to register and track anything. Idea:
-1. Register some item like a ligher.
-2. Trade or lose said lighter.
+1. Register some item like a book or ligher.
+2. Trade or lose said item.
 3. Track the item and see where it has been!
 
 
