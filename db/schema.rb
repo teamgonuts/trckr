@@ -10,6 +10,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130116214832) do
+
+  create_table "admin_users", :force => true do |t|
+    t.string   "first_name",      :limit => 25
+    t.string   "last_name",       :limit => 40
+    t.string   "email",           :limit => 100, :default => "", :null => false
+    t.string   "hashed_password", :limit => 30
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.string   "username",        :limit => 25
+    t.string   "salt",            :limit => 40
+  end
+
+  add_index "admin_users", ["username"], :name => "index_admin_users_on_username"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "user"
+    t.string   "location"
+    t.string   "picture_path"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "comments", ["item_id"], :name => "index_comments_on_item_id"
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.string   "item_description"
+    t.string   "origin"
+    t.string   "original_owner"
+    t.string   "current_owner"
+    t.string   "picture_path"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
 end
