@@ -1,0 +1,26 @@
+<div class="item list">
+  <h2>Items</h2>
+
+  <table class="listing" summary="Item list">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Owner</th>
+      <th>Origin</th>
+    </tr>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.picture_path %></td>
+      <td><%= item.name %></td>
+      <td><%= item.item_description %></td>
+      <td><%= item.original_owner %></td>
+      <td><%= item.origin %></td>
+      <td class="actions">
+        <%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
+        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Delete", '#', :class => 'action delete') %>
+      </td>
+    <% end %>
+  </table>
+</div>

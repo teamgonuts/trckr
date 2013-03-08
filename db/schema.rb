@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116214832) do
+ActiveRecord::Schema.define(:version => 20130307221344) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(:version => 20130116214832) do
   end
 
   add_index "comments", ["item_id"], :name => "index_comments_on_item_id"
+
+  create_table "item_edits", :force => true do |t|
+    t.integer  "admin_user_id"
+    t.integer  "item_id"
+    t.string   "summary"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "item_edits", ["admin_user_id", "item_id"], :name => "index_item_edits_on_admin_user_id_and_item_id"
 
   create_table "items", :force => true do |t|
     t.string   "name"

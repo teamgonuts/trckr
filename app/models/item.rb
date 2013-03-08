@@ -2,4 +2,6 @@ class Item < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :comments
+  has_many :item_edits
+  has_many :editors, :through => :item_edits, :class_name => "AdminUser"
 end
