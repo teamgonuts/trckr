@@ -27,12 +27,40 @@ class ItemsController < ApplicationController
     #Save the object
     if @item.save
       #If save succeeds...
+      flash[:notice] = "Item registered successfully!"
       redirect_to(:action => 'show', :id => @item.id)
     else
       #If save fails...
       render('new') #will automatically repopulate forms
     end
-
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    #Update a new Item Object using form parameters
+    @item = Item.find(params[:id])
+
+    #Save the object
+    if @item.update_attributes(params[:item])
+      #If save succeeds...
+      flash[:notice] = "Item updated successfully!"
+      redirect_to(:action => 'show', :id => @item.id)
+    else
+      #If save fails...
+      render('edit') 
+    end
+  end
+
+  def delete
+    @item = Item.find(params[:id])
+  end
+
+  def destroy
+    Item.find(params[:id]).destroy
+    flash[:notice] = "Item destroyed successfully!"
+    redirect_to(:action => 'list')
+  end
 end

@@ -1,3 +1,9 @@
+<% if not flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="item list">
   <h2>Items</h2>
 
@@ -18,8 +24,8 @@
       <td><%= item.origin %></td>
       <td class="actions">
         <%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
-        <%= link_to("Edit", '#', :class => 'action edit') %>
-        <%= link_to("Delete", '#', :class => 'action delete') %>
+        <%= link_to("Edit", {:action => 'edit', :id => item.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => item.id}, :class => 'action delete') %>
       </td>
     <% end %>
   </table>
