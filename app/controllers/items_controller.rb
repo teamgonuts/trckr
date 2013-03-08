@@ -19,4 +19,20 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+
+  def create
+    #Create a new Item Object using form parameters
+    @item = Item.new(params[:item])
+
+    #Save the object
+    if @item.save
+      #If save succeeds...
+      redirect_to(:action => 'show', :id => @item.id)
+    else
+      #If save fails...
+      render('new') #will automatically repopulate forms
+    end
+
+  end
+
 end
