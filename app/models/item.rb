@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :item_description, :origin, :name, :original_owner
+  attr_accessible :description, :origin, :name, :original_owner
 
   has_many :comments
   has_many :item_edits

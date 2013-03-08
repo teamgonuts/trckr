@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307221344) do
+ActiveRecord::Schema.define(:version => 20130308215219) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(:version => 20130307221344) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
-    t.string   "item_description"
+    t.string   "description"
     t.string   "origin"
     t.string   "original_owner"
     t.string   "current_owner"
     t.string   "picture_path"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "uid"
   end
 
 end
