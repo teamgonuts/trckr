@@ -14,4 +14,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+
+  #register a new item
+  def new
+    @item = Item.new
+  end
 end
