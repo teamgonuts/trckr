@@ -14,6 +14,7 @@
       <th>Description</th>
       <th>Owner</th>
       <th>Origin</th>
+      <th>UID</th>
     </tr>
     <% @items.each do |item| %>
     <tr>
@@ -22,6 +23,7 @@
       <td><%= item.description %></td>
       <td><%= item.original_owner %></td>
       <td><%= item.origin %></td>
+      <td><%= item.uid %></td>
       <td class="actions">
         <%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
         <%= link_to("Edit", {:action => 'edit', :id => item.id}, :class => 'action edit') %>
