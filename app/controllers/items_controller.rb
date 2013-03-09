@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+
   #index defaults to list action
   def index
     list #calls list action
