@@ -1,12 +1,8 @@
+<% @page_title = @item.name %>
 <%= link_to("Back to list", {:action => 'list'}) %>
 <br />
 <%= link_to("Edit item", {:action => 'edit', :id => @item.id}) %>
 
-<% if not flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
 
 <div class="item show">
