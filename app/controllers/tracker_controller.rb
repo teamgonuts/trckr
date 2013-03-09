@@ -4,13 +4,15 @@ class TrackerController < ApplicationController
 
   def track
     puts "navigating to track view"
-    @id = params[:id]
+    puts params[:id]
+    @uid = params[:id]
   end
 
   #redirects to track after retrieving the url parameters
   #want a url parameter so users can link to the page
   def track_helper
-    @id = params[:id]
-    redirect_to "/tracker/track/#{@id}"
+    @uid = params[:uid]
+    puts @uid
+    redirect_to "/tracker/track/#{@uid}"
   end
 end

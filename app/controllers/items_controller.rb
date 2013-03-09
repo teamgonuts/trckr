@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
 
 
   def list
-    @items = Item.order("items.id ASC")
+    @items = Item.order("items.created_at DESC")
   end
 
   def show
@@ -39,10 +39,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  #TODO: make sure when you update uid that it is still unique!
   def update
     #Update a new Item Object using form parameters
     @item = Item.find(params[:id])
-
+    
     #Save the object
     if @item.update_attributes(params[:item])
       #If save succeeds...

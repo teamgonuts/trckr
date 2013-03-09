@@ -3,7 +3,7 @@
 <p>
   <u> Track an item: </u>
   <%= form_tag(:action => 'track_helper') do %>
-    Item ID: <%= text_field_tag(:id) %>
+    Item ID: <%= text_field_tag(:uid) %>
 
     <%= submit_tag('Track Item') %>
   <% end %>
