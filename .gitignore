@@ -15,3 +15,15 @@
 /tmp
 
 *.swo
+
+*.swp
+
+app/views/items/.delete.html.erb.swp
+
+app/views/items/.edit.html.erb.swp
+
+app/views/items/.list.html.erb.swp
+
+app/views/items/.new.html.erb.swp
+
+app/views/items/.show.html.erb.swp

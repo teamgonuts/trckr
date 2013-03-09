@@ -9,31 +9,10 @@
 
   <%= form_for(:item, :url => {:action => 'create'}) do |f| %>
 
-    <table summary="Item form fields">
-      <tr>
-        <th>Item Name</th>
-        <td><%= f.text_field(:name) %></td>
-      </tr>
-      <tr>
-        <th>Description</th>
-        <td><%= f.text_field(:description) %></td>
-      </tr>
-      <tr>
-        <th>Origin</th>
-        <td><%= f.text_field(:origin) %></td>
-      </tr>
-      <tr>
-        <th>Owner</th>
-        <td><%= f.text_field(:original_owner) %></td>
-      </tr>
-      <tr>
-        <th>Upload Picture</th>
-        <td><b>TO DO</b></td>
-      </tr>
-    </table>
+    <%= render(:partial => 'form_table', :locals => {:f => f}) %>
 
     <div class="form-buttons">
-      <%= submit_tag("Register Item") %>
+      <%= submit_tag("Update Item") %>
     </div>
 
   <% end %>
