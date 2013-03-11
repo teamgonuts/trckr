@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :origin, :name, :original_owner, :uid
+  attr_accessible :description, :origin, :name, :original_owner, :uid, :message
 
   before_create :generate_uid
 
