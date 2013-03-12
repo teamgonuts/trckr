@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   validates_length_of :description, :message, :maximum=> 255
   validates_length_of :uid, :maximum => 40
 
+  validates_format_of :uid, :with => ALPHA_NUMERIC_REGEX
+
   validates_uniqueness_of :uid
 
 
