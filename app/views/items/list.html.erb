@@ -25,11 +25,11 @@
       <td><%= item.created_at.to_s(:long) %></td>
       <td><%= item.updated_at.to_s(:long) %></td>
       <td class="actions">
-        <%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
+        <%= link_to("Show", {:action => 'show', :id => item.uid}, :class => 'action show') %>
         <%= link_to("Edit", {:action => 'edit', :id => item.id}, :class => 'action edit') %>
         <%= link_to("Delete", {:action => 'delete', :id => item.id}, :class => 'action delete') %>
       </td>
     <% end %>
   </table>
-  <%= link_to("Back to index" , {:controller => 'tracker', :action => 'index'}) %>
+  <%= link_to("Back to index" , { :action => 'index'}) %>
 </div>

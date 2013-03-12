@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
 
 
-  #index defaults to list action
   def index
-    list #calls list action
-    render('list') #renders list action
   end
 
 
@@ -13,7 +10,18 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    uid = params[:id]
+    @item = Item.find_by_uid(uid)
+
+    if @item.blank?
+      flash[:notice] = "Error: No item exists with codename '" + uid + "'"
+      redirect_to(:action => 'index')
+    end
+  end
+
+  def show_helper
+    uid = params[:id]
+    redirect_to "/c/#{uid}"
   end
 
   #register a new item
@@ -29,7 +37,7 @@ class ItemsController < ApplicationController
     if @item.save
       #If save succeeds...
       flash[:notice] = "Item registered successfully!"
-      redirect_to(:action => 'show', :id => @item.id)
+      redirect_to(:action => 'show', :id => @item.uid)
     else
       #If save fails...
       render('new') #will automatically repopulate forms
@@ -49,7 +57,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(params[:item])
       #If save succeeds...
       flash[:notice] = "Item updated successfully!"
-      redirect_to(:action => 'show', :id => @item.id)
+      redirect_to(:action => 'show', :id => @item.uid)
     else
       #If save fails...
       render('edit') 

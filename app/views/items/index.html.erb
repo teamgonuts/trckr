@@ -2,7 +2,7 @@
 <p>This is the landing page</p>
 <p>
   <u> Track an item: </u>
-  <%= form_tag(:action => 'show') do %>
+  <%= form_tag(:action => 'show_helper') do %>
      Codename: <%= text_field_tag(:id) %>
 
     <%= submit_tag('Track Item') %>
