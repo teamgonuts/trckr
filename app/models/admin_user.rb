@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class AdminUser < ActiveRecord::Base
   # attr_accessible :title, :body
   
@@ -20,4 +22,11 @@ class AdminUser < ActiveRecord::Base
                     :uniqueness => true
                 
 
+  def self.make_salt(username = "")
+    Digest::SHA1.hexdigest("Use #{username} with #{Time.now} to make salt")
+  end
+
+  def self.hash_with_salt(password = "", salt = "")
+    Digest::SHA1.hexdigest("Put #{salt} on the #{password}")
+  end
 end
