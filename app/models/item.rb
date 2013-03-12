@@ -7,6 +7,8 @@ class Item < ActiveRecord::Base
   has_many :item_edits
   has_many :editors, :through => :item_edits, :class_name => "AdminUser"
 
+  validates_presence_of :name, :uid
+
   protected
 
   #generates a uid for the item if its not already specified by user

@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1><%= link_to('Tagr', {:controller => 'items', :action => 'index'}) %></h1>
 
   <% if !flash[:notice].blank? %>
   <div class="notice">
