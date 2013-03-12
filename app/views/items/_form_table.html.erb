@@ -1,28 +1,28 @@
-<%= render(:partial => 'shared/error_messages', :locals => {:object => @item}) %>
+<%= error_messages_for(@item) %>
 
 <table summary="Item form fields">
   <tr>
-    <th>Item Name</th>
+    <th><%= f.label(:name, 'Item Name') %></th>
     <td><%= f.text_field(:name) %></td>
   </tr>
   <tr>
-    <th>Origin</th>
+    <th><%= f.label(:origin) %></th>
     <td><%= f.text_field(:origin) %></td>
   </tr>
   <tr>
-    <th>Owner</th>
+    <th><%= f.label(:original_owner, 'Owner') %></th>
     <td><%= f.text_field(:original_owner) %></td>
   </tr>
   <tr>
-    <th>Description</th>
+    <th><%= f.label(:description) %></th>
     <td><%= f.text_area(:description, :size => '40x10') %></td> 
   </tr>
   <tr>
-    <th>Codename / URL</th>
+    <th><%= f.label(:uid, 'Codename / URL') %></th>
     <td><%= f.text_field(:uid) %> </td>
   </tr>
   <tr>
-    <th>Message to Next Owner</th>
+    <th><%= f.label(:message, 'Message to next user') %></th>
     <td><%= f.text_area(:message, :size => '40x10') %> </td>
   </tr>
   <tr>

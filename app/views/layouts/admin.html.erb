@@ -12,6 +12,7 @@
   <div id="header">
     <h1>Tagr Admin Area</h1>
   </div>
+  <h1><%= link_to('Tagr', {:controller => 'items', :action => 'index'}) %></h1>
 
   <% if !flash[:notice].blank? %>
   <div class="notice">

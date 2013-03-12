@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  layout 'admin'
 
   def index
   end
