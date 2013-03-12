@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
   def show
     uid = params[:id]
-    @item = Item.find_by_uid(uid)
+    @item = Item.find_by_uid(uid.to_s)
 
     if @item.blank?
       flash[:notice] = "Error: No item exists with codename '" + uid + "'"
@@ -46,13 +46,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id].to_s)
   end
 
   #TODO: make sure when you update uid that it is still unique!
   def update
     #Update a new Item Object using form parameters
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id].to_s)
     
     #Save the object
     if @item.update_attributes(params[:item])
@@ -66,11 +66,11 @@ class ItemsController < ApplicationController
   end
 
   def delete
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id].to_s)
   end
 
   def destroy
-    Item.find(params[:id]).destroy
+    Item.find(params[:id].to_s).destroy
     flash[:notice] = "Item destroyed successfully!"
     redirect_to(:action => 'list')
   end
