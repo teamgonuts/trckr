@@ -1,6 +1,9 @@
 <% @page_title = 'Tracking' %>
 <h1>Tracker#track</h1>
 <p>This page will be used to view an items details</p>
-<p><b>Item id: <%= @uid %> </b></p>
+<p>
+<b>Item id: <%= @item.uid %> </b> <br />
+  <b>Item name: <%= @item.name %> </b>
+</p>
 
 <%= link_to("Back to index" , {:action => 'index'}) %>

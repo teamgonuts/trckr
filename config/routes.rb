@@ -1,5 +1,7 @@
 Trckr::Application.routes.draw do
   root :to => "tracker#index"
+
+  match 't/:id' => 'tracker#track'
   #get "tracker/index"
 
   # The priority is based upon order of creation:
