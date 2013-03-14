@@ -31,7 +31,7 @@ class AdminUser < ActiveRecord::Base
   after_save :clear_password
   
   def self.authenticate(username = "", password = "")
-    user = AdminUser.find_by_username(username)
+    user = AdminUser.find_by_username(username.to_s)
 
     if user && user.password_match?(password)
         return user #passwords match, return user object

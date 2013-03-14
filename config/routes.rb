@@ -1,5 +1,8 @@
 Trckr::Application.routes.draw do
+
   root :to => "items#index"
+
+  match 'admin', :to => 'access#menu'
 
   match 'c/:id' => 'items#show'
   
