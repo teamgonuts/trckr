@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311210639) do
+ActiveRecord::Schema.define(:version => 20130314062040) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
     t.string   "last_name",       :limit => 40
     t.string   "email",           :limit => 100, :default => "", :null => false
-    t.string   "hashed_password", :limit => 30
+    t.string   "hashed_password"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.string   "username",        :limit => 25

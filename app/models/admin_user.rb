@@ -7,6 +7,7 @@ class AdminUser < ActiveRecord::Base
   has_many :items, :through => :item_edits
 
   attr_accessor :password #Item attribute not saved in the db
+  attr_protected :hashed_password, :salt
 
 
   #sexy validations
@@ -29,6 +30,21 @@ class AdminUser < ActiveRecord::Base
   before_save :create_hashed_password
   after_save :clear_password
   
+  def self.authenticate(username = "", password = "")
+    user = AdminUser.find_by_username(username)
+
+    if user && user.password_match?(password)
+        return user #passwords match, return user object
+    else
+        return false
+    end
+  end
+
+  #the same password string with the same hash method and salt should
+  #always generate the same hashed_password
+  def password_match?(password="")
+    hashed_password == AdminUser.hash_with_salt(password, salt)
+  end
 
   def self.make_salt(username = "")
     Digest::SHA1.hexdigest("Use #{username} with #{Time.now} to make salt")
