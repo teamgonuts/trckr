@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="header">
-    <h1>Tagr Admin Area</h1>
+    <h1><%= link_to('Tagr Admin Area' , :controller => 'access', :action => 'menu')%></h1>
   </div>
   <h1><%= link_to('Tagr', {:controller => 'items', :action => 'index'}) %></h1>
 
