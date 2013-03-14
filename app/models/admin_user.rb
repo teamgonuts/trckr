@@ -6,6 +6,8 @@ class AdminUser < ActiveRecord::Base
   has_many :item_edits
   has_many :items, :through => :item_edits
 
+  attr_accessor :password #Item attribute not saved in the db
+
 
   #sexy validations
   validates :first_name, :presence => true, :length => {:maximum => 40}
@@ -20,7 +22,13 @@ class AdminUser < ActiveRecord::Base
   validates :email, :presence => true, :length => {:maximum => 100},
                     :format => EMAIL_REGEX, :confirmation => true,
                     :uniqueness => true
+
+  #only on create, so other attributes of this user can be changed
+  validates_length_of :password, :within => 6...25, :on => :create
                 
+  before_save :create_hashed_password
+  after_save :clear_password
+  
 
   def self.make_salt(username = "")
     Digest::SHA1.hexdigest("Use #{username} with #{Time.now} to make salt")
@@ -29,4 +37,26 @@ class AdminUser < ActiveRecord::Base
   def self.hash_with_salt(password = "", salt = "")
     Digest::SHA1.hexdigest("Put #{salt} on the #{password}")
   end
+
+  private
+
+  def create_hashed_password
+    #whenever :password has a value, hashing is needed
+    unless password.blank?
+      #always use "self" when assigning values
+      self.salt = AdminUser.make_salt(username) if salt.blank?
+      self.hashed_password = AdminUser.hash_with_salt(password, salt)
+    end
+  end
+
+  def clear_password
+    #for security and b/c hashing is not needed
+    self.password = nil
+  end
+
 end
+
+
+
+
+
