@@ -4,15 +4,17 @@ class AdminUsersController < ApplicationController
   layout 'admin'
 
   def index
+    list
+    render('list')
   end
 
   def list
-    @admin_users = AdminUsers.order("admin_users.last_name ASC")
+    @admin_users = AdminUser.sorted
   end
 
   def show
     user_id = params[:id]
-    @admin_user = AdminUsers.find(user_id.to_s)
+    @admin_user = AdminUser.find(user_id.to_s)
 
     if @admin_user.blank?
       flash[:notice] = "Error: could not find admin with id: #{user_id}"

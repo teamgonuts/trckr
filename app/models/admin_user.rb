@@ -29,6 +29,8 @@ class AdminUser < ActiveRecord::Base
                 
   before_save :create_hashed_password
   after_save :clear_password
+
+  scope :sorted, order("admin_users.last_name ASC, admin_users.first_name ASC")
   
   def self.authenticate(username = "", password = "")
     user = AdminUser.find_by_username(username.to_s)
@@ -52,6 +54,11 @@ class AdminUser < ActiveRecord::Base
 
   def self.hash_with_salt(password = "", salt = "")
     Digest::SHA1.hexdigest("Put #{salt} on the #{password}")
+  end
+
+  #returns the first and last name as a string
+  def name
+    "#{first_name} #{last_name}"
   end
 
   private
