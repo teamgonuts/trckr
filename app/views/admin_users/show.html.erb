@@ -1,0 +1,13 @@
+<% @page_title = "Username: " + @admin_user.username %>
+<%= link_to("Back to list", {:action => 'list'}) %>
+<br />
+<%= link_to("Edit User", {:action => 'edit', :id => @admin_user.id}) %>
+
+
+
+<div class="User show">
+  <h2>Show User</h2>
+
+  <%= render(:partial => 'admin_display_table') %>
+
+</div>

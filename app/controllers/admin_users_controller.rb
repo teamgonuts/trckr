@@ -31,7 +31,7 @@ class AdminUsersController < ApplicationController
     @admin_user = AdminUser.new(params[:admin_user])
 
     if @admin_user.save
-      flash[:notice] = "Successfully logged in!"
+      flash[:notice] = "User created!"
       redirect_to(:action => 'show', :id => @admin_user.id)
     else
       render('new')
@@ -43,7 +43,7 @@ class AdminUsersController < ApplicationController
   end
 
   def update
-    @admin_user = Item.find(params[:id].to_s)
+    @admin_user = AdminUser.find(params[:id].to_s)
     
     #Save the object
     if @admin_user.update_attributes(params[:admin_user])
